@@ -1,9 +1,8 @@
 package com.example.android.echallan;
 
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.Html;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,9 +16,12 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ChallanViewActivity extends ActionBarActivity {
@@ -83,7 +85,7 @@ public class ChallanViewActivity extends ActionBarActivity {
         response = s.request("POST",url, headers=dic, params=querystring)
         */
 
-            String responseString= new String();
+            String responseString= "";
 
             try {
                 String url = "https://www.echallan.org/publicview/CaptchaServlet.do";
@@ -136,12 +138,68 @@ public class ChallanViewActivity extends ActionBarActivity {
             }
             Log.d("aa", "dd");
 
+            parse(responseString);
+
             return responseString;
         }
 
+        public class ChallanEntry
+        {
+            public String SerialNumber;
+            public boolean Selected;
+            public String UnitName;
+            public String EchallanNo;
+            public String Date;
+            public String Time;
+            public String PlaceOfViolation;
+            public String TrafficPSLimits;
+            public String Violation;
+            public String TotalFinaAmount;
+            public String UserCharges;
+            public String Total;
+            public String Image;
+        }
+
+        List<ChallanEntry> entries = new ArrayList<ChallanEntry>();
+
+        void parse(String html)
+        {
+            Document doc = Jsoup.parseBodyFragment(html);
+            //Element body = doc.body();
+
+            //first entry is selectAll and last entry is printAll
+            Elements tableEntries = doc.select("tr:has(input)");
+
+            for(int i=1;i<tableEntries.size()-1;i++)
+            {
+                ChallanEntry c = new ChallanEntry();
+                c.SerialNumber=tableEntries.get(i).child(0).text();
+                c.Selected=false;
+                c.UnitName=tableEntries.get(i).child(2).text();
+                c.EchallanNo=tableEntries.get(i).child(3).text();
+                c.Date=tableEntries.get(i).child(4).text();
+                c.Time=tableEntries.get(i).child(5).text();
+                c.PlaceOfViolation=tableEntries.get(i).child(6).text();
+                c.TrafficPSLimits=tableEntries.get(i).child(7).text();
+                c.Violation=tableEntries.get(i).child(8).text();
+                c.TotalFinaAmount=tableEntries.get(i).child(9).text();
+                c.UserCharges=tableEntries.get(i).child(10).text();
+                c.Total=tableEntries.get(i).child(11).text();
+                c.Image=tableEntries.get(i).child(12).text();
+                entries.add(c);
+            }
+        }
+
         protected void onPostExecute(String result) {
+
             TextView foo = (TextView) findViewById(R.id.foo);
-            foo.setText(Html.fromHtml(result));
+            String ret="";
+            for(int i=0;i<entries.size();i++)
+            {
+                ret+=entries.get(i).UnitName+"\t";
+            }
+
+            foo.setText(ret);
         }
     }
 }
