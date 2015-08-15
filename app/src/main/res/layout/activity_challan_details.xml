@@ -1,0 +1,304 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TableRow style="?android:listSeparatorTextViewStyle">
+
+            <TextView
+
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false"
+                android:text="Serial Number" />
+
+            <TextView
+                android:id="@+id/challanDetailsSerialNumber"
+
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false" />
+        </TableRow>
+
+        <TableRow style="?android:listSeparatorTextViewStyle">
+
+            <TextView
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false"
+                android:text="Unit Name" />
+
+            <TextView
+                android:id="@+id/challanDetailsUnitName"
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false" />
+        </TableRow>
+
+        <TableRow style="?android:listSeparatorTextViewStyle">
+
+            <TextView
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false"
+                android:text="Echallan Number" />
+
+            <TextView
+                android:id="@+id/challanDetailsEchallanNo"
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false" />
+        </TableRow>
+
+        <TableRow style="?android:listSeparatorTextViewStyle">
+
+            <TextView
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false"
+                android:text="Date" />
+
+            <TextView
+                android:id="@+id/challanDetailsDate"
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false" />
+        </TableRow>
+
+        <TableRow style="?android:listSeparatorTextViewStyle">
+
+            <TextView
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false"
+                android:text="Time" />
+
+            <TextView
+                android:id="@+id/challanDetailsTime"
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false" />
+        </TableRow>
+
+        <TableRow style="?android:listSeparatorTextViewStyle">
+
+            <TextView
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false"
+                android:text="Place of Violation" />
+
+            <TextView
+                android:id="@+id/challanDetailsPlaceOfViolation"
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false" />
+        </TableRow>
+
+        <TableRow style="?android:listSeparatorTextViewStyle">
+
+            <TextView
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false"
+                android:text="Traffic PS Limits" />
+
+            <TextView
+                android:id="@+id/challanDetailsTrafficPSLimits"
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false" />
+        </TableRow>
+
+        <TableRow style="?android:listSeparatorTextViewStyle">
+
+            <TextView
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false"
+                android:text="Violation" />
+
+            <TextView
+                android:id="@+id/challanDetailsViolation"
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false" />
+        </TableRow>
+
+        <TableRow style="?android:listSeparatorTextViewStyle">
+
+            <TextView
+
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false"
+                android:text="Fine Amount" />
+
+            <TextView
+                android:id="@+id/challanDetailsTotalFinaAmount"
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false" />
+        </TableRow>
+
+        <TableRow style="?android:listSeparatorTextViewStyle">
+
+            <TextView
+
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false"
+                android:text="User Charges" />
+
+            <TextView
+                android:id="@+id/challanDetailsUserCharges"
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false" />
+        </TableRow>
+
+        <TableRow style="?android:listSeparatorTextViewStyle">
+
+            <TextView
+
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false"
+                android:text="Total" />
+
+            <TextView
+                android:id="@+id/challanDetailsTotal"
+
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false" />
+        </TableRow>
+
+        <TableRow style="?android:listSeparatorTextViewStyle">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false"
+                android:text="Image" />
+
+            <TextView
+                android:id="@+id/challanDetailsImage"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:padding="4dp"
+                android:scrollHorizontally="false"
+                android:singleLine="false" />
+        </TableRow>
+    </TableLayout>
+</ScrollView>
