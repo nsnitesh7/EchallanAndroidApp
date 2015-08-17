@@ -1,5 +1,6 @@
 package com.example.android.echallan;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,16 +26,18 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-public class ChallanListView extends ListActivity {
+public class ChallanListView extends Activity {
 
-    public ChallanListView() {
-    }
+    ExpandableListAdapter listAdapter;
+    ExpandableListView expListView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_main);
 
         // TODO: Change Adapter to display your content
    //     setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
@@ -41,42 +45,14 @@ public class ChallanListView extends ListActivity {
         new ChallanDataCollector().execute("AP28DE9398");
     }
 
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        //Log.d(TAG,c.getTitle() + "is clicked!");
-        Intent i = new Intent(ChallanListView.this,ChallanDetailsActivity.class);
-        i.putExtra("challanID",position);
-        startActivity(i);
-    }
-
     public void DisplayItems()
     {
-        ChallanAdapter adapter = new ChallanAdapter(ChallanLab.GetChallans());
-        setListAdapter(adapter);
+        expListView = (ExpandableListView) findViewById(R.id.lvExp);
+        listAdapter = new ExpandableListAdapter(this, ChallanLab.GetChallans());
+        //ChallanAdapter adapter = new ChallanAdapter(ChallanLab.GetChallans());
+        expListView.setAdapter(listAdapter);
     }
 
-    private class ChallanAdapter extends ArrayAdapter<ChallanEntry>
-    {
-        public ChallanAdapter(ArrayList<ChallanEntry> challans)
-        {
-            super(ChallanListView.this,0,challans);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if(convertView==null)
-            {
-                convertView=getLayoutInflater().inflate(R.layout.list_item_challan,null);
-            }
-
-            ChallanEntry c = getItem(position);
-            ((TextView)convertView.findViewById(R.id.date)).setText(c.Date);
-            ((TextView)convertView.findViewById(R.id.violation)).setText(c.Violation);
-            ((TextView)convertView.findViewById(R.id.amount)).setText(c.TotalFinaAmount);
-
-            return convertView;
-        }
-    }
     public class ChallanDataCollector extends AsyncTask<String,String,String> {
 
         protected String doInBackground(String... urls) {
@@ -191,6 +167,7 @@ public class ChallanListView extends ListActivity {
                 c.UserCharges=tableEntries.get(i).child(10).text();
                 c.Total=tableEntries.get(i).child(11).text();
                 c.Image=tableEntries.get(i).child(12).text();
+                entries.add(c);
                 entries.add(c);
                 entries.add(c);
             }
